@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="24dp"
+    app:cardCornerRadius="5dp"
+    android:background="#000000">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/ivHeadlinesPoster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/tvHeadlines"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="sdskdskdmskdmsk"
+                android:layout_marginBottom="24dp"
+                android:textSize="20sp"
+                android:textColor="#f2f2f2"
+                android:fontFamily="@font/robotoslab_regular"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvHeadlinesChannel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#bababa"
+                    android:text="sdsjdsdjsdjsijdsjid"
+                    android:fontFamily="@font/robotoslab_bold"/>
+
+                <TextView
+                    android:id="@+id/tvHeadlinesDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#bababa"
+                    android:fontFamily="@font/robotoslab_light"
+                    android:text="sdksjds"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</androidx.cardview.widget.CardView>
