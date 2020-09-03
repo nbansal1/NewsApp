@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="300dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginRight="16dp"
     android:layout_marginLeft="16dp"
     android:layout_marginTop="24dp"
     app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="8dp"
+    android:outlineAmbientShadowColor="@color/colorPrimary"
     android:background="#000000">
 
     <FrameLayout
@@ -30,7 +33,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="bottom"
-                android:text="sdskdskdmskdmsk"
                 android:layout_marginBottom="24dp"
                 android:textSize="20sp"
                 android:textColor="#f2f2f2"
@@ -46,7 +48,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="#bababa"
-                    android:text="sdsjdsdjsdjsijdsjid"
                     android:fontFamily="@font/robotoslab_bold"/>
 
                 <TextView
@@ -57,8 +58,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="16dp"
                     android:textColor="#bababa"
-                    android:fontFamily="@font/robotoslab_light"
-                    android:text="sdksjds"/>
+                    android:fontFamily="@font/robotoslab_light" />
 
             </LinearLayout>
 

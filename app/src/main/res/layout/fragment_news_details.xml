@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    android:id="@+id/rootLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.NewsDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/ivHeadlinesPoster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/custom_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_shortcut_arrow_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp">
+        <TextView
+            android:id="@+id/tvNewsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/robotoslab_regular"
+            android:textSize="14sp"
+            android:textColor="#bababa"
+            android:text="dfjmdksl,ksldk,lsl,ls,dsl,"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvHeadingPublisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvNewsDescription"
+            android:text="sdjskdskdsk"
+            android:textSize="20sp"
+            android:layout_marginTop="64dp"
+            android:fontFamily="@font/robotoslab_regular"
+            android:textColor="#f2f2f2"/>
+
+        <TextView
+            android:id="@+id/tvHeadingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kskdnskdms"
+            android:layout_above="@id/tvNewsDescription"
+            android:layout_alignParentRight="true"
+            android:textSize="20sp"
+            android:fontFamily="@font/robotoslab_regular"
+            android:textColor="#f2f2f2"/>
+
+        <TextView
+            android:id="@+id/tvHeadingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvHeadingPublisher"
+            android:text="kjdskdskdmskldmskdmskdmskdms"
+            android:fontFamily="@font/robotoslab_bold"
+            android:textSize="29sp"
+            android:textColor="#f2f2f2"
+            android:textAlignment="viewStart"/>
+
+
+    </RelativeLayout>
 
 </FrameLayout>

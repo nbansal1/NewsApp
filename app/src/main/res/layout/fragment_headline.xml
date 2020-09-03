@@ -9,6 +9,14 @@
     <include
         layout="@layout/cutom_toolbar"/>
 
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        style="?attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHeadlines"
         android:layout_width="match_parent"

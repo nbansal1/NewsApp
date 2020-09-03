@@ -22,5 +22,9 @@
         android:id="@+id/newsDetailsFragment"
         android:name="com.codingwithnaman.newsapp.ui.fragments.NewsDetailsFragment"
         android:label="fragment_news_details"
-        tools:layout="@layout/fragment_news_details" />
+        tools:layout="@layout/fragment_news_details" >
+        <argument
+            android:name="article"
+            app:argType="com.codingwithnaman.newsapp.model.Article" />
+    </fragment>
 </navigation>
