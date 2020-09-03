@@ -1,6 +1,6 @@
 package com.codingwithnaman.newsapp.api
 
-import com.codingwithnaman.newsapp.ui.NewsResponse
+import com.codingwithnaman.newsapp.model.NewsResponse
 import com.codingwithnaman.newsapp.util.Constant.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET

@@ -1,6 +1,7 @@
-package com.codingwithnaman.newsapp.ui
+package com.codingwithnaman.newsapp.model
 
 
+import com.codingwithnaman.newsapp.model.Article
 import com.google.gson.annotations.SerializedName
 
 data class NewsResponse(

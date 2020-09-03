@@ -1,4 +1,4 @@
-package com.codingwithnaman.newsapp.ui
+package com.codingwithnaman.newsapp.model
 
 
 import com.google.gson.annotations.SerializedName
