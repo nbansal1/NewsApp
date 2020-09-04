@@ -27,7 +27,7 @@
         android:layout_marginLeft="24dp">
         <TextView
             android:id="@+id/tvNewsDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:fontFamily="@font/robotoslab_regular"

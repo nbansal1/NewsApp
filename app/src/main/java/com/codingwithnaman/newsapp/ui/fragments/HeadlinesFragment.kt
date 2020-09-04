@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -51,6 +52,9 @@ class HeadlinesFragment : Fragment() {
                         headlinesNewsAdapter.differ.submitList(newsResponse.articles.toList())
                         val totalPages = newsResponse.totalResults / QUERY_PAGE_SIZE + 2
                         isLastPage = viewModel.breakingNewsPage == totalPages
+                        if(isLastPage) {
+                            rvHeadlines.setPadding(0, 0, 0, 0)
+                        }
                     }
                 }
                 is Resource.Loading -> {
@@ -61,19 +65,19 @@ class HeadlinesFragment : Fragment() {
                     progress_circular.visibility = View.GONE
                     isLoading = false
                     it.message?.let {msg ->
-                        Log.e("TAG", "An error occured ${msg}")
+                        Toast.makeText(activity, "An error occured: $msg", Toast.LENGTH_LONG).show()
                     }
                 }
             }
         })
     }
 
+
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
 
-
-    val scrollListener = object : RecyclerView.OnScrollListener(){
+    val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
 
@@ -86,18 +90,17 @@ class HeadlinesFragment : Fragment() {
             val isAtLastItem = firstVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotAtBeginning = firstVisibleItemPosition >= 0
             val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
-            val shouldPaginate = isNotLoadingAndNotLastPage && !isAtLastItem && isNotAtBeginning && isTotalMoreThanVisible && isScrolling
-
-            if(shouldPaginate){
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
+                    isTotalMoreThanVisible && isScrolling
+            if(shouldPaginate) {
                 viewModel.getBreakingNews("us")
                 isScrolling = false
             }
-
         }
 
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
-            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                 isScrolling = true
             }
         }
@@ -108,7 +111,7 @@ class HeadlinesFragment : Fragment() {
         rvHeadlines.apply {
             adapter = headlinesNewsAdapter
             layoutManager = LinearLayoutManager(activity)
-            addOnScrollListener(scrollListener)
+            addOnScrollListener(this@HeadlinesFragment.scrollListener)
         }
     }
 }

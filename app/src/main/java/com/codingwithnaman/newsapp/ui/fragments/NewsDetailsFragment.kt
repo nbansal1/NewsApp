@@ -42,9 +42,9 @@ class NewsDetailsFragment : Fragment() {
             .centerCrop()
             .into(ivHeadlinesPoster)
 
+        tvNewsDescription.text = article.description
         tvHeadingTitle.text = article.title
         tvHeadingPublisher.text = article.author
         tvHeadingDate.text = article.publishedAt
-        tvNewsDescription.text = article.description
     }
 }
