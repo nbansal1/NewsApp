@@ -11,9 +11,9 @@ import com.codingwithnaman.newsapp.model.Article
 interface ArticleDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun upsert(articleList: List<Article>)
+    suspend fun upsert(articleList: List<Article>)
 
     @Query("SELECT * FROM articles")
-    fun getAllArticles() : List<Article>
+    suspend fun getAllArticles() : List<Article>
 
 }

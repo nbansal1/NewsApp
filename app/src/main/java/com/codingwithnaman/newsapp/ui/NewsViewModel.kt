@@ -39,8 +39,6 @@ class NewsViewModel(
         safeBreakingNewsCall(countryCode)
     }
 
-    fun getOfflineBreakingNew() = newsRepository.getOfflineBreakingNews()
-
     private fun handleBreakingNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
@@ -64,8 +62,15 @@ class NewsViewModel(
             if (hasInternetConnection()) {
                 val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage)
                 breakingNews.postValue(handleBreakingNewsResponse(response))
+
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        saveBreakingNews(it.articles)
+                    }
+                }
+
             } else {
-                breakingNews.postValue(Resource.Error("No internet connection"))
+                getOfflineBreakingNews()
             }
         } catch (t: Throwable) {
             when (t) {
@@ -75,7 +80,7 @@ class NewsViewModel(
         }
     }
 
-    private fun hasInternetConnection(): Boolean {
+    public fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<NewsApplication>().getSystemService(
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager
@@ -102,5 +107,17 @@ class NewsViewModel(
         return false
     }
 
+    fun saveBreakingNews(articleList: List<Article>) = viewModelScope.launch {
+        newsRepository.upsert(articleList)
+    }
+
+    fun getOfflineBreakingNews() = viewModelScope.launch {
+         val articleList =  newsRepository.getOfflineBreakingNews()
+        if(articleList.isEmpty()) {
+            breakingNews.postValue(Resource.Error("No internet connection"))
+            return@launch
+        }
+        offlineBreakingNews.postValue(articleList)
+    }
 
 }

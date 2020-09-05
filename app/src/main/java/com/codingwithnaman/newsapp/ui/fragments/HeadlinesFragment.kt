@@ -69,6 +69,13 @@ class HeadlinesFragment : Fragment() {
                 }
             }
         })
+
+        if(!viewModel.hasInternetConnection()){
+            viewModel.offlineBreakingNews.observe(viewLifecycleOwner, Observer {
+                headlinesNewsAdapter.differ.submitList(it)
+                progress_circular.visibility = View.GONE
+            })
+        }
     }
 
 
