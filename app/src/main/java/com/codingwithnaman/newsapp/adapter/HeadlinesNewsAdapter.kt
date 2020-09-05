@@ -43,7 +43,7 @@ class HeadlinesNewsAdapter(
                 .into(ivHeadlinesPoster)
 
             tvHeadlines.text = article.title
-            tvHeadlinesChannel.text = article.author
+            tvHeadlinesChannel.text = article.source!!.name
 
             tvHeadlinesDate.text = Utils.parseDate(article.publishedAt)
 

@@ -45,7 +45,7 @@ class NewsDetailsFragment : Fragment() {
 
         tvNewsDescription.text = article.description
         tvHeadingTitle.text = article.title
-        tvHeadingPublisher.text = article.author
+        tvHeadingPublisher.text = article.source!!.name
         tvHeadingDate.text = Utils.parseDate(article.publishedAt)
     }
 }
