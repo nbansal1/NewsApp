@@ -1,22 +1,22 @@
 package com.codingwithnaman.newsapp.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import com.codingwithnaman.newsapp.api.NewsAPI
 import com.codingwithnaman.newsapp.api.RetrofitInstance
+import com.codingwithnaman.newsapp.db.ArticleDao
 import com.codingwithnaman.newsapp.db.ArticleDatabase
 import com.codingwithnaman.newsapp.model.Article
 
 class NewsRepository(
-    val db : ArticleDatabase
+    val dao : ArticleDao,
+    val api: NewsAPI
 ) {
 
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
-        RetrofitInstance.api.getBreakingNews(countryCode,pageNumber)
+        api.getBreakingNews(countryCode,pageNumber)
 
     suspend fun upsert(articleList: List<Article>) {
-        db.getArticleDao().upsert(articleList)
+        dao.upsert(articleList)
     }
 
-    fun getOfflineBreakingNews() = db.getArticleDao().getAllArticles()
-
+    fun getOfflineBreakingNews() = dao.getAllArticles()
 }

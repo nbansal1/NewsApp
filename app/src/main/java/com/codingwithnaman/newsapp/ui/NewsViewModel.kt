@@ -15,7 +15,9 @@ import com.codingwithnaman.newsapp.model.Article
 import com.codingwithnaman.newsapp.model.NewsResponse
 import com.codingwithnaman.newsapp.repository.NewsRepository
 import com.codingwithnaman.newsapp.util.Resource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.io.IOException
 
@@ -62,7 +64,6 @@ class NewsViewModel(
             if (hasInternetConnection()) {
                 val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage)
                 breakingNews.postValue(handleBreakingNewsResponse(response))
-//                newsRepository.upsert(response.body()?.articles!!.toList())
             } else {
                 breakingNews.postValue(Resource.Error("No internet connection"))
             }

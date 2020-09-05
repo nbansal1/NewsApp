@@ -20,9 +20,10 @@ import com.codingwithnaman.newsapp.ui.NewsViewModel
 import com.codingwithnaman.newsapp.util.Constant.Companion.QUERY_PAGE_SIZE
 import com.codingwithnaman.newsapp.util.Resource
 import kotlinx.android.synthetic.main.fragment_headline.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HeadlinesFragment : Fragment() {
-    lateinit var viewModel : NewsViewModel
+    private val viewModel by viewModel<NewsViewModel>()
     lateinit var headlinesNewsAdapter: HeadlinesNewsAdapter
     lateinit var navController: NavController
 
@@ -36,8 +37,6 @@ class HeadlinesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = (activity as NewsActivity).viewModel
 
         navController = Navigation.findNavController(view)
 
