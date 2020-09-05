@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.codingwithnaman.newsapp.R
 import com.codingwithnaman.newsapp.model.Article
+import com.codingwithnaman.newsapp.util.Utils
 import kotlinx.android.synthetic.main.fragment_news_details.*
 
 class NewsDetailsFragment : Fragment() {
@@ -45,6 +46,6 @@ class NewsDetailsFragment : Fragment() {
         tvNewsDescription.text = article.description
         tvHeadingTitle.text = article.title
         tvHeadingPublisher.text = article.author
-        tvHeadingDate.text = article.publishedAt
+        tvHeadingDate.text = Utils.parseDate(article.publishedAt)
     }
 }

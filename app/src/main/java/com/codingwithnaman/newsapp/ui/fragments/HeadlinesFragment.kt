@@ -57,7 +57,8 @@ class HeadlinesFragment : Fragment() {
                     }
                 }
                 is Resource.Loading -> {
-                    progress_circular.visibility = View.VISIBLE
+                    if(!dontShowProgressBar)
+                        progress_circular.visibility = View.VISIBLE
                     isLoading = true
                 }
                 is Resource.Error -> {
@@ -82,6 +83,7 @@ class HeadlinesFragment : Fragment() {
     var isLoading = false
     var isLastPage = false
     var isScrolling = false
+    var dontShowProgressBar : Boolean = false
 
     val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -99,8 +101,11 @@ class HeadlinesFragment : Fragment() {
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
             if(shouldPaginate) {
+                dontShowProgressBar = true
                 viewModel.getBreakingNews("us")
                 isScrolling = false
+            } else{
+                dontShowProgressBar = false
             }
         }
 
